@@ -1,0 +1,149 @@
+/* Container centers the card */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card style */
+.card-home {
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    /* semi-transparent dark card */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.card-home:hover {
+    transform: translateY(-10px);
+}
+
+/* Info container */
+.info-container {
+    text-align: center;
+}
+
+.info-name {
+    font-size: 44pt;
+    margin-bottom: 20px;
+}
+
+.info-description {
+    font-size: 14pt;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Contact info grid */
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+    margin-top: 40px;
+}
+
+.contact-subcontainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.contact-icon {
+    font-size: 20px;
+    color: #00e5ff;
+    min-width: 24px;
+}
+
+.link-contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+}
+
+.link-contact:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.home-subcontainer-cv {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.view-cv-btn {
+    text-decoration: none;
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(135deg, #283048, #859398);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.view-cv-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: left 0.4s ease;
+}
+
+.view-cv-btn:hover::before {
+    left: 0;
+}
+
+.view-cv-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-home {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .info-name {
+        font-size: 24pt;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .info-description {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .link-contact {
+        font-size: 15px;
+    }
+}

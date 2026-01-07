@@ -1,0 +1,93 @@
+.cert-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px;
+    color: white;
+    text-align: center;
+}
+
+.cert-title {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* Slide grid */
+.cert-slide {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* Card */
+.cert-card {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 18px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+}
+
+.cert-card h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.cert-issuer {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.cert-date {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Buttons */
+.cert-buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-cert {
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.btn-cert:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-cert:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .cert-slide {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-title {
+        font-size: 30px;
+    }
+
+    .cert-card h2 {
+        font-size: 18px;
+    }
+}
