@@ -15,6 +15,7 @@ PawCare is a full-stack web-based platform designed to modernize veterinary serv
 It provides appointment scheduling, secure online payments, and client management.
 Built with React JS and REST APIs, integrated with PayMongo for payments, and deployed using Vercel and Render.
             `,
+            hasLiveDemo: false,
             live: 'https://pawcare-theta.vercel.app/',
             github: 'https://github.com/neilraphaelramos/PawCare-Dev-Frontend.git',
         },
@@ -28,6 +29,7 @@ The Adventure Worlds is a self-taught game development project built using Godot
 Features include 2D/3D environments, collision detection, physics-based interactions,
 custom UI, and Blender-created 3D assets. Currently in beta testing.
             `,
+            hasLiveDemo: true,
             live: 'https://test-game-v1.vercel.app/',
         },
     ]
@@ -49,9 +51,13 @@ custom UI, and Blender-created 3D assets. Currently in beta testing.
                             <h2>{project.title}</h2>
 
                             <div className="project-links">
-                                {project.live && (
-                                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                        Live Demo
+                                {project.hasLiveDemo && project.live && (
+                                    <a
+                                        href={project.live}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {project.id === 2 ? 'Game Demo' : 'Live Demo'}
                                     </a>
                                 )}
                                 {project.github && (

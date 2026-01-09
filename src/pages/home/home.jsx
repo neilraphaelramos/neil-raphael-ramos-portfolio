@@ -42,8 +42,8 @@ function HomePage() {
 
                         <div className='contact-subcontainer'>
                             <FaPhoneAlt className="contact-icon" />
-                            <a href="tel:+63905424926" className='link-contact'>
-                                +63 905 424 926
+                            <a href="tel:+639054249262" className='link-contact'>
+                                +63 905 424 9262
                             </a>
                         </div>
 
