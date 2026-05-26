@@ -1,96 +1,143 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './certificationPage.css'
 
 function CertificationsPage() {
-  const slides = [
-    [
-      {
-        title: 'Java Programming',
-        issuer: 'Oracle',
-        date: 'May 2023',
-      },
-      {
-        title: 'Introduction to CSS',
-        issuer: 'TESDA',
-        date: 'July 2023',
-      },
-      {
-        title: 'Installing & Configuring Computer Systems',
-        issuer: 'TESDA',
-        date: 'June 2023',
-      },
-      {
-        title: 'Setting Up Computer Servers',
-        issuer: 'TESDA',
-        date: 'October 2024',
-      },
-    ],
-    [
-      {
-        title: 'Setting Up Computer Networks',
-        issuer: 'TESDA',
-        date: 'October 2024',
-      },
-      {
-        title: 'Computer Hardware Basics',
-        issuer: 'Cisco',
-        date: 'June 2025',
-      },
-      {
-        title: 'Introduction to Cybersecurity',
-        issuer: 'Cisco',
-        date: 'December 2024',
-      },
-      {
-        title: 'Agentblazer Champion Workshop',
-        issuer: 'PCITE & Salesforce',
-        date: 'November 2025',
-      },
-    ],
-  ]
 
-  const [currentSlide, setCurrentSlide] = useState(0)
+    const [data, setData] = useState(null)
 
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1)
-  }
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [itemsPerPage, setItemsPerPage] = useState(4)
 
-  const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(currentSlide - 1)
-  }
+    useEffect(() => {
 
-  return (
-    <div className="cert-container">
-      <h1 className="cert-title">Certifications</h1>
+        fetch('/Data/certifications.json')
+            .then(res => res.json())
+            .then(data => setData(data))
+            .catch(err => console.error(err))
 
-      <div className="cert-slide">
-        {slides[currentSlide].map((cert, index) => (
-          <div className="cert-card" key={index}>
-            <h2>{cert.title}</h2>
-            <p className="cert-issuer">{cert.issuer}</p>
-            <p className="cert-date">{cert.date}</p>
-          </div>
-        ))}
-      </div>
+    }, [])
 
-      <div className="cert-buttons">
-        <button
-          className="btn-cert"
-          onClick={prevSlide}
-          disabled={currentSlide === 0}
-        >
-          ◀ Previous
-        </button>
-        <button
-          className="btn-cert"
-          onClick={nextSlide}
-          disabled={currentSlide === slides.length - 1}
-        >
-          Next ▶
-        </button>
-      </div>
-    </div>
-  )
+    // Detect browser height
+    useEffect(() => {
+
+        const handleResize = () => {
+
+            if (window.innerHeight <= 750) {
+                setItemsPerPage(2)
+            } else {
+                setItemsPerPage(4)
+            }
+
+        }
+
+        handleResize()
+
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+
+    }, [])
+
+    if (!data) return <div>Loading...</div>
+
+    const certifications = data.certifications
+
+    const maxIndex = Math.max(
+        0,
+        certifications.length - itemsPerPage
+    )
+
+    const nextSlide = () => {
+
+        if (currentIndex < maxIndex) {
+            setCurrentIndex(prev => prev + itemsPerPage)
+        }
+
+    }
+
+    const prevSlide = () => {
+
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - itemsPerPage)
+        }
+
+    }
+
+    const visibleCerts = certifications.slice(
+        currentIndex,
+        currentIndex + itemsPerPage
+    )
+
+    const openCertificate = (file) => {
+
+        if (file) {
+            window.open(file, '_blank')
+        }
+
+    }
+
+    return (
+        <div className="cert-container">
+
+            <h1 className="cert-title">
+                Certifications
+            </h1>
+
+            <div className="cert-slide">
+
+                {visibleCerts.map((cert, index) => (
+
+                    <div className="cert-card" key={index}>
+
+                        <h2>{cert.title}</h2>
+
+                        <p className="cert-issuer">
+                            {cert.issuer}
+                        </p>
+
+                        <p className="cert-date">
+                            {cert.date}
+                        </p>
+
+                        {cert.file && (
+                            <button
+                                className="btn-cert-view"
+                                onClick={() =>
+                                    openCertificate(cert.file)
+                                }
+                            >
+                                View Certificate
+                            </button>
+                        )}
+
+                    </div>
+
+                ))}
+
+            </div>
+
+            <div className="cert-buttons">
+
+                <button
+                    className="btn-cert"
+                    onClick={prevSlide}
+                    disabled={currentIndex === 0}
+                >
+                    ◀ Previous
+                </button>
+
+                <button
+                    className="btn-cert"
+                    onClick={nextSlide}
+                    disabled={currentIndex >= maxIndex}
+                >
+                    Next ▶
+                </button>
+
+            </div>
+
+        </div>
+    )
 }
 
 export default CertificationsPage

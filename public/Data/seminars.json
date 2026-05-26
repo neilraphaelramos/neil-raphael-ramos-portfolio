@@ -1,0 +1,34 @@
+{
+    "seminars": [
+        {
+            "title": "DYCI ITSS Intern - OJT",
+            "issuer": "DYCI",
+            "date": "January - May 2026"
+        },
+        {
+            "title": "Animation Webinar",
+            "issuer": "DICT",
+            "date": "Nov 2025"
+        },
+        {
+            "title": "Agentblazer Champion Workshop",
+            "issuer": "PCITE & Salesforce",
+            "date": "Oct 2025"
+        },
+        {
+            "title": "4th Regional Cybersecurity Conference",
+            "issuer": "Holy Angel University",
+            "date": "Oct 2025"
+        },
+        {
+            "title": "Digital Transformation 101: A Webinar Series on Technology Adoption of MSMes",
+            "issuer": "UP, Diliman, Quezon City",
+            "date": "Nov 2024"
+        },
+        {
+            "title": "CCS Tech Seminar Series 2025",
+            "issuer": "DYCI",
+            "date": "April 2025"
+        }
+    ]
+}

@@ -60,7 +60,7 @@ function HomePage() {
                 <div className='home-subcontainer-cv'>
                     <a
                         className='view-cv-btn'
-                        href='/Data/Neil_Raphael_Ramos_CV.pdf'
+                        href='/cv/Neil_Raphael_Ramos_CV_Updated.pdf'
                         rel='noopener noreferrer'
                         target='_blank'
                     >

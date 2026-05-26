@@ -1,0 +1,88 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "PawCare: Enhancing Veterinary Efficiency and Client Engagement Through Digital Solutions",
+            "image": "/images/pawcare.PNG",
+            "tags": [
+                "Full-Stack Developer",
+                "Backend Developer",
+                "Frontend Developer",
+                "Debugger",
+                "MYSQL",
+                "React JS Vite"
+            ],
+            "description": "PawCare is a full-stack web-based platform designed to modernize veterinary services. It provides appointment scheduling, secure online payments, and client management. Built with React JS and REST APIs, integrated with PayMongo for payments, and deployed using Vercel and Render.",
+            "hasLiveDemo": false,
+            "live": "https://pawcare-theta.vercel.app/",
+            "github": "https://github.com/neilraphaelramos/PawCare-Dev-Frontend.git",
+            "image-fit": "cover"
+        },
+        {
+            "id": 2,
+            "title": "The Adventure Worlds (Godot | Self-Taught)",
+            "image": "/images/game_project.png",
+            "tags": [
+                "Game Developer",
+                "3D Artist",
+                "Game Logic",
+                "Debugger",
+                "Self-Taught",
+                "Blender",
+                "GDScript"
+            ],
+            "description": "The Adventure Worlds is a self-taught game development project built using Godot Engine. Features include 2D/3D environments, collision detection, physics-based interactions, custom UI, and Blender-created 3D assets. Currently in beta testing.",
+            "hasLiveDemo": true,
+            "live": "https://test-game-v1.vercel.app/",
+            "image-fit": "cover"
+        },
+        {
+            "id": 3,
+            "title": "Project Miniature Magis Model - OJT Project",
+            "images": [
+                "/images/magis_output.jpg",
+                "/images/magis_model.PNG",
+                "/images/magis_assembly.jpg",
+                "/images/magis_mass_production.jpg",
+                "/images/magis_printed.jpg"
+            ],
+            "tags": [
+                "3D Artist",
+                "Blender",
+                "Modeling",
+                "3D Print",
+                "Creality Printer"
+            ],
+            "description": "A project of miniature Magis robot and I was intern of ITSS and assisted to Robotic in DYCI for this miniature project of Magis.",
+            "hasLiveDemo": false,
+            "github": "",
+            "image-fit": "contain"
+        },
+        {
+            "id": 4,
+            "title": "Project Elida and Buhunan - OJT Project",
+            "images": [
+                "/images/diorama_building_1.PNG",
+                "/images/diorama_building_2.PNG",
+                "/images/diorama_building_3.PNG",
+                "/images/elida_editirium.jpg",
+                "/images/half_printed_diorama.jpg",
+                "/images/partial_print_hc.jpg",
+                "/images/printed_2.jpg",
+                "/images/printing_1.jpg"
+            ],
+            "tags": [
+                "3D Artist",
+                "Blender",
+                "Modeling",
+                "3D Print",
+                "Creality Printer",
+                "Building Model"
+            ],
+            "description": "A project of diorama for Elida Campus at Dr. Yanga's Colleges Inc. Making a 3D model buildings, houses and school buildings and Printing into 3D model print.",
+            "hasLiveDemo": false,
+            "live": "",
+            "image-fit": "contain"
+        }
+    ]
+}

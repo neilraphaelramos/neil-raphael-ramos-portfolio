@@ -131,6 +131,12 @@ body {
   }
 }
 
+@media (max-height: 750px) {
+  .link-btn {
+    font-size: 18px;
+  }
+}
+
 
 /* background themes */
 .bg-home {

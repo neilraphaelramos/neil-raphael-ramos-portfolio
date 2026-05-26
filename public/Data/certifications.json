@@ -1,0 +1,70 @@
+{
+    "certifications": [
+        {
+            "title": "DYCI ITSS Intern - OJT",
+            "issuer": "ITSS Supervisor",
+            "date": "May 2026",
+            "file": ""
+        },
+        {
+            "title": "IT Specialist - JavaScript",
+            "issuer": "Certiport",
+            "date": "January 2026",
+            "file": "/certifications/JavaScript.pdf"
+        },
+        {
+            "title": "HCIA-Cloud Service V3.5 Course",
+            "issuer": "Huawei ICT Academy",
+            "date": "November 2025",
+            "file": "/certifications/huawei_cerf_ramos.pdf"
+        },
+        {
+            "title": "Agentblazer Champion Workshop",
+            "issuer": "PCITE & Salesforce",
+            "date": "November 2025",
+            "file": "/certifications/Agentblazer_Champion_Workshop_October_Certificate_Set1-242.pdf"
+        },
+        {
+            "title": "Computer Hardware Basics",
+            "issuer": "Cisco",
+            "date": "June 2025",
+            "file": "/certifications/ComputerHardwareBasicsUpdate20250618-27-rxbkwv.pdf"
+        },
+        {
+            "title": "Setting Up Computer Networks",
+            "issuer": "TESDA",
+            "date": "October 2024",
+            "file": "/certifications/Certificate_of_Completion SUCN Ramos, Neil Raphael.pdf"
+        },
+        {
+            "title": "Introduction to Cybersecurity",
+            "issuer": "Cisco",
+            "date": "December 2024",
+            "file": "/certifications/I2CSUpdate20250618-28-lwf19t.pdf"
+        },
+        {
+            "title": "Setting Up Computer Servers",
+            "issuer": "TESDA",
+            "date": "October 2024",
+            "file": "/certifications/Certificate_of_Completion_NEW SUCS Ramos, Neil Raphael.pdf"
+        },
+        {
+            "title": "Java Programming - Completion",
+            "issuer": "Oracle",
+            "date": "May 2023",
+            "file": "/certifications/Oracle_Final_Exam_Certificate.pdf"
+        },
+        {
+            "title": "Introduction to CSS",
+            "issuer": "TESDA",
+            "date": "July 2023",
+            "file": "/certifications/Certificate_of_Completion Introduction of CSS Ramos, Neil Raphael.pdf"
+        },
+        {
+            "title": "Installing & Configuring Computer Systems",
+            "issuer": "TESDA",
+            "date": "June 2023",
+            "file": "/certifications/Certificate_of_Completion_NEW ICCS Ramos, Neil Raphael.pdf"
+        }
+    ]
+}

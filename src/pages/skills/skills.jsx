@@ -1,88 +1,118 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './skillsPage.css'
 
 function SkillsPage() {
-  const slides = [
-    [
-      {
-        category: 'Programming & Development',
-        items: ['Java', 'JavaScript', 'PHP', 'SQL', 'HTML', 'CSS'],
-      },
-      {
-        category: 'Game Development (Self-Taught)',
-        items: ['Godot Engine', 'GDScript'],
-      },
-      {
-        category: 'Databases',
-        items: ['Firebase', 'MySQL'],
-      },
-      {
-        category: 'Version Control',
-        items: ['Git', 'GitHub'],
-      },
-    ],
-    [
-      {
-        category: 'Tools & Software',
-        items: ['Adobe Photoshop', 'Blender (3D)', 'Microsoft Office (Word, Excel, PowerPoint)'],
-      },
-      {
-        category: 'IT & Systems',
-        items: ['Computer Assembly', 'Computer Technician', 'OS Installation', 'Networking Hardware Setup'],
-      },
-      {
-        category: 'Soft Skills',
-        items: ['Communication', 'Team Collaboration', 'Adaptability', 'Time Management'],
-      },
-    ],
-  ]
 
-  const [currentSlide, setCurrentSlide] = useState(0)
+    const [data, setData] = useState(null)
 
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1)
-  }
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [itemsPerPage, setItemsPerPage] = useState(4)
 
-  const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(currentSlide - 1)
-  }
+    // Fetch JSON
+    useEffect(() => {
 
-  return (
-    <div className="skills-container">
-      <h1 className="skills-title">Skills</h1>
+        fetch('/Data/skills.json')
+            .then(response => response.json())
+            .then(data => setData(data))
+            .catch(error => console.error(error))
 
-      <div className="skills-slide">
-        {slides[currentSlide].map((skill, index) => (
-          <div className="skills-card" key={index}>
-            <h2>{skill.category}</h2>
-            <ul>
-              {skill.items.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+    }, [])
 
-      <div className="skills-buttons">
-        <button
-          className="btn-skill"
-          onClick={prevSlide}
-          disabled={currentSlide === 0}
-        >
-          ◀ Previous
-        </button>
+    // Detect browser height
+    useEffect(() => {
 
-        <button
-          className="btn-skill"
-          onClick={nextSlide}
-          disabled={currentSlide === slides.length - 1}
-        >
-          Next ▶
-        </button>
-      </div>
-    </div>
-  )
+        const handleResize = () => {
+
+            if (window.innerHeight <= 750) {
+                setItemsPerPage(2)
+            } else {
+                setItemsPerPage(4)
+            }
+
+        }
+
+        handleResize()
+
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+
+    }, [])
+
+    if (!data) return <div>Loading...</div>
+
+    const skills = data.skills
+
+    const maxIndex = Math.max(0, skills.length - itemsPerPage)
+
+    const nextSlide = () => {
+
+        if (currentIndex < maxIndex) {
+            setCurrentIndex(prev => prev + itemsPerPage)
+        }
+
+    }
+
+    const prevSlide = () => {
+
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - itemsPerPage)
+        }
+
+    }
+
+    const visibleSkills = skills.slice(
+        currentIndex,
+        currentIndex + itemsPerPage
+    )
+
+    return (
+        <div className="skills-container">
+
+            <h1 className="skills-title">Skills</h1>
+
+            <div className="skills-slide">
+
+                {visibleSkills.map((skill, index) => (
+
+                    <div className="skills-card" key={index}>
+
+                        <h2>{skill.category}</h2>
+
+                        <ul>
+                            {skill.items.map((item, i) => (
+                                <li key={i}>{item}</li>
+                            ))}
+                        </ul>
+
+                    </div>
+
+                ))}
+
+            </div>
+
+            <div className="skills-buttons">
+
+                <button
+                    className="btn-skill"
+                    onClick={prevSlide}
+                    disabled={currentIndex === 0}
+                >
+                    ◀ Previous
+                </button>
+
+                <button
+                    className="btn-skill"
+                    onClick={nextSlide}
+                    disabled={currentIndex >= maxIndex}
+                >
+                    Next ▶
+                </button>
+
+            </div>
+
+        </div>
+    )
 }
 
 export default SkillsPage

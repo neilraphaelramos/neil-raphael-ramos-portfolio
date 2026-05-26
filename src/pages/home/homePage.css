@@ -147,3 +147,36 @@
         font-size: 15px;
     }
 }
+
+@media (max-height: 750px) {
+    .info-name {
+        font-size: 30pt;
+        margin-bottom: 10px;
+    }
+
+    .info-description {
+        font-size: 11pt;
+        margin-bottom: -10px;
+        text-align: justify;
+    }
+
+    .link-contact {
+        font-size: 12px;
+    }
+
+    .card-home {
+        width: 80%;
+    }
+
+    .contact-icon {
+        font-size: 14px;
+    }
+
+    .contact-subcontainer {
+        gap: 6px;
+    }
+
+    .view-cv-btn {
+        font-size: 14px;
+    }
+}

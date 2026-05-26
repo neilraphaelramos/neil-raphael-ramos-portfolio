@@ -1,0 +1,51 @@
+{
+    "experience": [
+        {
+            "title": "DYCI ITSS Intern – OJT",
+            "date": "January 2026 – May 2026",
+            "points": [
+                "ITSS Intern Completion of 500 hours of OJT",
+                "Assigned as IT Infra on networking and maintenance of ComLabs",
+                "Creating the 3D model for Magis Robot and Diorama model",
+                "3D modeling using Blender and Creality for 3D Printing"
+            ]
+        },
+        {
+            "title": "Capstone Project – PawCare",
+            "date": "January 2025 – May 2026",
+            "points": [
+                "Full-stack development using React JS and REST APIs",
+                "Integrated PayMongo for secure payments",
+                "Used Git/GitHub for version control",
+                "Deployed via Vercel (frontend) and Render (backend)"
+            ]
+        },
+        {
+            "title": "Game Development – The Adventure Worlds",
+            "date": "September 2025 – Present",
+            "points": [
+                "Developed a 2D/3D adventure game using Godot Engine and GDScript",
+                "Designed UI, scenes, and interactions",
+                "Implemented collision detection and physics",
+                "Created 3D assets using Blender"
+            ]
+        },
+        {
+            "title": "React JS Movie Website",
+            "date": "July 2024 – December 2024",
+            "points": [
+                "Built a responsive movie website using React JS and TMDB API",
+                "Implemented search and filtering features",
+                "Handled frontend-backend integration"
+            ]
+        },
+        {
+            "title": "SHS Work Immersion – Creotec Company",
+            "date": "February 2021",
+            "points": [
+                "Developed a payroll calculator using MIT App Inventor",
+                "Conducted testing and debugging with the development team"
+            ]
+        }
+    ]
+}

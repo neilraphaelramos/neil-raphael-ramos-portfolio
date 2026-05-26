@@ -1,88 +1,110 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './experiencePage.css'
 
 function ExperiencePage() {
-    const slides = [
-        [
-            {
-                title: 'Capstone Project – PawCare',
-                date: 'January 2025 – Present',
-                points: [
-                    'Full-stack development using React JS and REST APIs',
-                    'Integrated PayMongo for secure payments',
-                    'Used Git/GitHub for version control',
-                    'Deployed via Vercel (frontend) and Render (backend)',
-                ],
-            },
-            {
-                title: 'Game Development – The Adventure Worlds',
-                date: 'September 2025 – Present',
-                points: [
-                    'Developed a 2D/3D adventure game using Godot Engine and GDScript',
-                    'Designed UI, scenes, and interactions',
-                    'Implemented collision detection and physics',
-                    'Created 3D assets using Blender',
-                ],
-            },
-        ],
-        [
-            {
-                title: 'React JS Movie Website',
-                date: 'July 2024 – December 2024',
-                points: [
-                    'Built a responsive movie website using React JS and TMDB API',
-                    'Implemented search and filtering features',
-                    'Handled frontend-backend integration',
-                ],
-            },
-            {
-                title: 'SHS Work Immersion – Creotec Company',
-                date: 'February 2021',
-                points: [
-                    'Developed a payroll calculator using MIT App Inventor',
-                    'Conducted testing and debugging with the development team',
-                ],
-            },
-        ],
-    ]
 
-    const [currentSlide, setCurrentSlide] = useState(0)
+    const [data, setData] = useState(null)
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [itemsPerPage, setItemsPerPage] = useState(3)
+
+    useEffect(() => {
+
+        fetch('/Data/experience.json')
+            .then(res => res.json())
+            .then(data => setData(data))
+            .catch(err => console.error(err))
+
+    }, [])
+
+    // responsive height logic
+    useEffect(() => {
+
+        const handleResize = () => {
+
+            if (window.innerHeight <= 750) {
+                setItemsPerPage(2)
+            } else {
+                setItemsPerPage(4)
+            }
+
+        }
+
+        handleResize()
+
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+
+    }, [])
+
+    if (!data) return <div>Loading...</div>
+
+    const experience = data.experience
+
+    const maxIndex = Math.max(
+        0,
+        experience.length - itemsPerPage
+    )
 
     const nextSlide = () => {
-        if (currentSlide < slides.length - 1) {
-            setCurrentSlide(currentSlide + 1)
+
+        if (currentIndex < maxIndex) {
+            setCurrentIndex(prev => prev + itemsPerPage)
         }
+
     }
 
     const prevSlide = () => {
-        if (currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1)
+
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - itemsPerPage)
         }
+
     }
+
+    const visibleExperience = experience.slice(
+        currentIndex,
+        currentIndex + itemsPerPage
+    )
 
     return (
         <div className="experience-container">
-            <h1 className="experience-title">Experience</h1>
+
+            <h1 className="experience-title">
+                Experience
+            </h1>
 
             <div className="experience-slide">
-                {slides[currentSlide].map((exp, index) => (
+
+                {visibleExperience.map((exp, index) => (
+
                     <div className="experience-card" key={index}>
+
                         <h2>{exp.title}</h2>
-                        <p className="experience-date">{exp.date}</p>
+
+                        <p className="experience-date">
+                            {exp.date}
+                        </p>
+
                         <ul>
                             {exp.points.map((point, i) => (
                                 <li key={i}>{point}</li>
                             ))}
                         </ul>
+
                     </div>
+
                 ))}
+
             </div>
 
             <div className="experience-buttons">
+
                 <button
                     className="btn-exp"
                     onClick={prevSlide}
-                    disabled={currentSlide === 0}
+                    disabled={currentIndex === 0}
                 >
                     ◀ Previous
                 </button>
@@ -90,11 +112,13 @@ function ExperiencePage() {
                 <button
                     className="btn-exp"
                     onClick={nextSlide}
-                    disabled={currentSlide === slides.length - 1}
+                    disabled={currentIndex >= maxIndex}
                 >
                     Next ▶
                 </button>
+
             </div>
+
         </div>
     )
 }
