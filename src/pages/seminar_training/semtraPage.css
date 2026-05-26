@@ -90,6 +90,10 @@
     .semtra-card h2 {
         font-size: 18px;
     }
+
+    .semtra-buttons {
+        margin-top: 30px;
+    }
 }
 
 @media (max-height: 750px) {

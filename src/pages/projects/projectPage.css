@@ -224,15 +224,11 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-
-    .project-image {
-        width: 100%;
-        height: auto;
+        margin-bottom: 10px;
     }
 
     .projects-title {
-        margin-top: 0px;
+       margin-bottom: 20px;
     }
 
     .project-links {
@@ -241,6 +237,15 @@
         justify-content: center;
         gap: 10px;
     }
+
+    .modal-content h2 {
+        font-size: 15pt;
+    }
+
+    .modal-content p {
+        font-size: 10pt;
+    }
+
 }
 
 @media (max-height: 750px) {

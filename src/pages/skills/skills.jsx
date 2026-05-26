@@ -39,6 +39,7 @@ function SkillsPage() {
 
     }, [])
 
+
     if (!data) return <div>Loading...</div>
 
     const skills = data.skills

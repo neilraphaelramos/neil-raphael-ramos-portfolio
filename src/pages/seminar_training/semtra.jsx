@@ -39,6 +39,26 @@ function SemTraPage() {
 
     }, [])
 
+    useEffect(() => {
+
+        const handleResize = () => {
+
+            if (window.innerWidth <= 500) {
+                setItemsPerPage(2)
+            } else {
+                setItemsPerPage(4)
+            }
+
+        }
+
+        handleResize()
+
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+
+    }, [])
+
     if (!data) return <div>Loading...</div>
 
     const seminars = data.seminars

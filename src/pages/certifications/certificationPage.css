@@ -100,10 +100,16 @@
 
     .cert-title {
         font-size: 30px;
+        margin-bottom: 10px;
     }
 
     .cert-card h2 {
         font-size: 18px;
+    }
+
+
+    .cert-buttons {
+        margin-top: 30px;
     }
 }
 

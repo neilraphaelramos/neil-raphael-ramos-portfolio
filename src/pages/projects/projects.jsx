@@ -34,6 +34,21 @@ function ProjectsPage() {
     }, [])
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 500) {
+                setProjectsPerPage(1)
+            } else {
+                setProjectsPerPage(2)
+            }
+        }
+
+        handleResize()
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    useEffect(() => {
         if (!data) return
 
         const interval = setInterval(() => {
