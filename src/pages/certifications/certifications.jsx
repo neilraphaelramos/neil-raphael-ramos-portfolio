@@ -4,7 +4,6 @@ import './certificationPage.css'
 function CertificationsPage() {
 
     const [data, setData] = useState(null)
-
     const [currentIndex, setCurrentIndex] = useState(0)
     const [itemsPerPage, setItemsPerPage] = useState(4)
 
@@ -25,59 +24,39 @@ function CertificationsPage() {
 
     }, [])
 
-    // Detect browser height / width
+    // Responsive items per page
     useEffect(() => {
 
         const handleResize = () => {
 
             if (window.innerHeight <= 850 || window.innerWidth <= 500) {
-                console.log("Small screen detected → 2 items per page")
+                console.log("Small screen → 2 items per page")
                 setItemsPerPage(2)
             } else {
-                console.log("Large screen detected → 4 items per page")
+                console.log("Large screen → 4 items per page")
                 setItemsPerPage(4)
             }
 
         }
 
         handleResize()
-
         window.addEventListener('resize', handleResize)
 
         return () => window.removeEventListener('resize', handleResize)
 
     }, [])
 
-    if (!data) {
-        console.log("Data is still loading...")
-        return <div>Loading...</div>
-    }
+    if (!data) return <div>Loading...</div>
 
     const certifications = data.certifications
 
-    const maxIndex = Math.max(
-        0,
-        certifications.length - itemsPerPage
-    )
-
-    console.log("STATE DEBUG:", {
-        currentIndex,
-        itemsPerPage,
-        maxIndex,
-        totalCerts: certifications.length
-    })
+    const maxIndex = Math.max(0, certifications.length - itemsPerPage)
 
     const nextSlide = () => {
         console.log("NEXT clicked")
 
         if (currentIndex < maxIndex) {
-            setCurrentIndex(prev => {
-                const newIndex = prev + itemsPerPage
-                console.log("Moving NEXT:", prev, "→", newIndex)
-                return newIndex
-            })
-        } else {
-            console.log("Already at maxIndex:", maxIndex)
+            setCurrentIndex(prev => prev + itemsPerPage)
         }
     }
 
@@ -85,13 +64,7 @@ function CertificationsPage() {
         console.log("PREVIOUS clicked")
 
         if (currentIndex > 0) {
-            setCurrentIndex(prev => {
-                const newIndex = prev - itemsPerPage
-                console.log("Moving PREV:", prev, "→", newIndex)
-                return newIndex
-            })
-        } else {
-            console.log("Already at start (0)")
+            setCurrentIndex(prev => prev - itemsPerPage)
         }
     }
 
@@ -100,28 +73,17 @@ function CertificationsPage() {
         currentIndex + itemsPerPage
     )
 
-    console.log("Visible Certificates:", visibleCerts)
-
-    const openCertificate = (file) => {
-        console.log("Open certificate clicked:", file)
-
-        if (file) {
-            window.open(file, '_blank')
-        } else {
-            console.log("No file available for this certificate")
-        }
-    }
+    console.log("Visible certs:", visibleCerts)
 
     return (
         <div className="cert-container">
 
-            <h1 className="cert-title">
-                Certifications
-            </h1>
+            <h1 className="cert-title">Certifications</h1>
 
             <div className="cert-slide">
 
                 {visibleCerts.map((cert, index) => (
+
                     <div className="cert-card" key={index}>
 
                         <h2>{cert.title}</h2>
@@ -134,16 +96,20 @@ function CertificationsPage() {
                             {cert.date}
                         </p>
 
+                        {/* ✅ FIXED: using href instead of window.open */}
                         {cert.file && (
-                            <button
+                            <a
                                 className="btn-cert-view"
-                                onClick={() => openCertificate(cert.file)}
+                                href={cert.file}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 View Certificate
-                            </button>
+                            </a>
                         )}
 
                     </div>
+
                 ))}
 
             </div>
