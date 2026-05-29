@@ -23,7 +23,7 @@ function SkillsPage() {
 
         const handleResize = () => {
 
-            if (window.innerHeight <= 750) {
+            if (window.innerHeight <= 850) {
                 setItemsPerPage(2)
             } else {
                 setItemsPerPage(4)

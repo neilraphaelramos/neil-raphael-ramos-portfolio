@@ -22,7 +22,7 @@ function CertificationsPage() {
 
         const handleResize = () => {
 
-            if (window.innerHeight <= 750) {
+            if (window.innerHeight <= 850 || window.innerWidth <= 500) {
                 setItemsPerPage(2)
             } else {
                 setItemsPerPage(4)
@@ -37,27 +37,7 @@ function CertificationsPage() {
         return () => window.removeEventListener('resize', handleResize)
 
     }, [])
-
-    useEffect(() => {
-
-        const handleResize = () => {
-
-            if (window.innerWidth <= 500) {
-                setItemsPerPage(2)
-            } else {
-                setItemsPerPage(4)
-            }
-
-        }
-
-        handleResize()
-
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
-
-    }, [])
-
+    
     if (!data) return <div>Loading...</div>
 
     const certifications = data.certifications

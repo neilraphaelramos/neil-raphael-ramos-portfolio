@@ -19,33 +19,28 @@ function ProjectsPage() {
 
     // Detect browser height
     useEffect(() => {
+
         const handleResize = () => {
-            if (window.innerHeight <= 730) {
+
+            // Small screen / laptop / short height
+            if (
+                window.innerHeight <= 850 ||
+                window.innerWidth <= 1200
+            ) {
                 setProjectsPerPage(1)
             } else {
                 setProjectsPerPage(2)
             }
+
         }
 
         handleResize()
+
         window.addEventListener('resize', handleResize)
 
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
+        return () =>
+            window.removeEventListener('resize', handleResize)
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 500) {
-                setProjectsPerPage(1)
-            } else {
-                setProjectsPerPage(2)
-            }
-        }
-
-        handleResize()
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
     }, [])
 
     useEffect(() => {

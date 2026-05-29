@@ -17,12 +17,15 @@ function ExperiencePage() {
 
     }, [])
 
-    // responsive height logic
     useEffect(() => {
 
         const handleResize = () => {
 
-            if (window.innerHeight <= 750) {
+            // Mobile or short screen
+            if (
+                window.innerHeight <= 850 ||
+                window.innerWidth <= 900
+            ) {
                 setItemsPerPage(2)
             } else {
                 setItemsPerPage(4)
@@ -34,27 +37,8 @@ function ExperiencePage() {
 
         window.addEventListener('resize', handleResize)
 
-        return () => window.removeEventListener('resize', handleResize)
-
-    }, [])
-
-    useEffect(() => {
-
-        const handleResize = () => {
-
-            if (window.innerWidth <= 500) {
-                setItemsPerPage(2)
-            } else {
-                setItemsPerPage(4)
-            }
-
-        }
-
-        handleResize()
-
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
+        return () =>
+            window.removeEventListener('resize', handleResize)
 
     }, [])
 
