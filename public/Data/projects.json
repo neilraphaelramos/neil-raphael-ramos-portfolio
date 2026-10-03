@@ -83,6 +83,28 @@
             "hasLiveDemo": false,
             "live": "",
             "image-fit": "contain"
+        },
+        {
+            "id": 5,
+            "title": "Admin Dashboard Server App - Self-Project",
+            "images": [
+                "/images/AdminDashboard1.PNG",
+                "/images/AdminDashboard2.PNG"
+            ],
+            "tags": [
+                "VB.net",
+                "Html",
+                "CSS",
+                "WebView2",
+                "VB.NET Developer",
+                "Local Server Development",
+                "Debugger"
+            ],
+            "description": "This Project was used for Local Server Interface with the Website Link from the Local Server (Ubuntu Server) via Local Network.",
+            "hasLiveDemo": false,
+            "live": "",
+            "github": "https://github.com/neilraphaelramos/AdminDashboardServerApp",
+            "image-fit": "contain"
         }
     ]
 }
